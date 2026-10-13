@@ -47,3 +47,69 @@ body {
   margin: 0 auto;
   padding: 24px;
 }
+
+.form-box {
+  max-width: 420px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.form-box h1 {
+  margin-bottom: 16px;
+}
+
+.form-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-box label {
+  font-size: 14px;
+}
+
+.form-box input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.form-box button {
+  margin-top: 10px;
+}
+
+.form-footer {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+button {
+  background-color: #1f2a44;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #33436e;
+}
+
+button.danger {
+  background-color: #c0392b;
+}
+
+button.danger:hover {
+  background-color: #a93226;
+}
+
+.error {
+  color: #c0392b;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
