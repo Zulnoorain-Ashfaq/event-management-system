@@ -123,3 +123,45 @@ button.danger:hover {
   margin-bottom: 10px;
   font-size: 14px;
 }
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.event-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.event-card:hover {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+}
+
+.event-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.event-card-body {
+  padding: 14px;
+}
+
+.event-card-body h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.event-card-body p {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 4px;
+}
