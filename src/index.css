@@ -214,3 +214,13 @@ button.danger:hover {
 .details-info p {
   margin-bottom: 10px;
 }
+
+.register-section {
+  margin-top: 20px;
+}
+
+.success {
+  color: #1e8449;
+  margin-top: 10px;
+  font-size: 14px;
+}

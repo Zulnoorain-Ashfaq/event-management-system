@@ -1,7 +1,11 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getEventDetails } from "../features/events/eventsSlice";
+import {
+  addRegistration,
+  removeRegistration,
+} from "../features/registrations/registrationsSlice";
 
 function EventDetails() {
   const { id } = useParams();
@@ -9,6 +13,9 @@ function EventDetails() {
   const event = useSelector((state) => state.events.event);
   const loading = useSelector((state) => state.events.loading);
   const error = useSelector((state) => state.events.error);
+  const user = useSelector((state) => state.auth.user);
+  const registrations = useSelector((state) => state.registrations.items);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     dispatch(getEventDetails(id));
@@ -47,6 +54,44 @@ function EventDetails() {
     event.priceRanges && event.priceRanges.length > 0
       ? event.priceRanges[0]
       : null;
+
+  const alreadyRegistered =
+    user &&
+    registrations.some(
+      (item) => item.eventId === event.id && item.userEmail === user.email
+    );
+
+  const handleRegister = () => {
+    if (alreadyRegistered) {
+      return;
+    }
+
+    dispatch(
+      addRegistration({
+        id: Date.now(),
+        eventId: event.id,
+        userEmail: user.email,
+        name: event.name,
+        image: image ? image.url : "",
+        date: event.dates.start.localDate,
+        venue: venue ? venue.name : "",
+        city: venue ? venue.city.name + ", " + venue.country.name : "",
+        category:
+          classification && classification.segment
+            ? classification.segment.name
+            : "Other",
+      })
+    );
+    setMessage("You have successfully registered for this event");
+  };
+
+  const handleCancel = () => {
+    const registration = registrations.find(
+      (item) => item.eventId === event.id && item.userEmail === user.email
+    );
+    dispatch(removeRegistration(registration.id));
+    setMessage("Your registration has been cancelled");
+  };
 
   return (
     <div className="container">
@@ -87,6 +132,22 @@ function EventDetails() {
           <a href={event.url} target="_blank" rel="noreferrer">
             View on Ticketmaster
           </a>
+          <div className="register-section">
+            {user ? (
+              alreadyRegistered ? (
+                <button className="danger" onClick={handleCancel}>
+                  Cancel Registration
+                </button>
+              ) : (
+                <button onClick={handleRegister}>Register for this Event</button>
+              )
+            ) : (
+              <p>
+                <Link to="/login">Login</Link> to register for this event
+              </p>
+            )}
+            {message && <p className="success">{message}</p>}
+          </div>
         </div>
       </div>
     </div>
