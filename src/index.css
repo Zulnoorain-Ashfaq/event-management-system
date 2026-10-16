@@ -188,3 +188,29 @@ button.danger:hover {
   border-radius: 4px;
   font-size: 15px;
 }
+
+.details-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.details-card img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.details-info {
+  padding: 24px;
+}
+
+.details-info h1 {
+  margin-bottom: 16px;
+}
+
+.details-info p {
+  margin-bottom: 10px;
+}
