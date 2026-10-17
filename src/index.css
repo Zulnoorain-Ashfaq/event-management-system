@@ -224,3 +224,11 @@ button.danger:hover {
   margin-top: 10px;
   font-size: 14px;
 }
+
+.container h2 {
+  margin: 28px 0 8px 0;
+}
+
+.event-card-body button {
+  margin-top: 10px;
+}
