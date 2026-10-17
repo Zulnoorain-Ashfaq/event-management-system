@@ -1,16 +1,40 @@
-# React + Vite
+# Event Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A React app for exploring events, viewing event details and registering for events. Built with React, Redux Toolkit, React Router and the Ticketmaster Discovery API.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- User registration, login and logout (frontend simulation with localStorage)
+- Browse upcoming events from the Ticketmaster Discovery API
+- Search events by keyword and filter by category
+- Event details page with venue, location, dates and prices
+- Register for events and cancel registrations
+- My Events page split into upcoming and completed events
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Clone the repository
+2. Install dependencies
 
-## Expanding the Oxlint configuration
+```
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+3. Get an API key from https://developer.ticketmaster.com/
+
+4. Create a `.env` file in the project root (same format as `.env.example`) and add your key
+
+```
+VITE_TICKETMASTER_KEY=your_api_key
+```
+
+5. Start the development server
+
+```
+npm run dev
+```
+
+## Notes
+
+- The `.env` file is git ignored so the API key is not committed
+- Authentication is simulated on the frontend, there is no backend
